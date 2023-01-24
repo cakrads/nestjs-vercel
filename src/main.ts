@@ -4,6 +4,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
+  app.enableVersioning(); // more about versioning: https://docs.nestjs.com/techniques/versioning
 
   const config = new DocumentBuilder()
     .setTitle('Median')
