@@ -13,11 +13,19 @@ export class ProductController {
 
   @Get()
   async findAll(): Promise<ProductModel[]> {
-    return this.productsService.findAll({});
+    try {
+      return await this.productsService.findAll({});
+    } catch (error) {
+      return error;
+    }
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<ProductModel> {
-    return this.productsService.findOne({ id: +id });
+    try {
+      return await this.productsService.findOne({ id: +id });
+    } catch (error) {
+      return error;
+    }
   }
 }
